@@ -19,10 +19,15 @@
       </nav>
     </header> 
     <form id="search-stock" action="" method="POST">
-      <label for='stock-query'>Symbol</label>
-      <input type="text" id="stock-query" name="new-task-description" placeholder="Symbol" autocomplete="off">
+      <input type="text" id="stock-query" name="search-stock" placeholder="Symbol" autocomplete="off" required="true">
       <input type="submit" value='Search'>
       <!-- <button class="btn" data-btn>BUY</button> -->
+  </form>
+  <form id="buyStock">
+    <!-- <input type="hidden" id="buy-symbol" value="" />
+    <input type="hidden" id="buy-price" value=0 /> -->
+    <input type="text" id="buy" name="buy-stock" placeholder="Quantity of Shares" autocomplete="off" required="true">
+    <input type="submit" value="Buy">
   </form>
   <h2 id="priceContainer">$</h2>
   <div class="checkmark-container">
