@@ -55,7 +55,7 @@ function userInput(stock) {
   })
 }
 
-combineTicker('SP')
+combineTicker('SPY')
 
 //chart in progress
 function combineTicker(ticker) {
@@ -68,11 +68,11 @@ function combineTicker(ticker) {
   
   const tickerObj = new TradingView.widget(
     {
-    "width": 980,
-    "height": 610,
+    "width": 1100,
+    "height": 710,
     "symbol": completeSymbol,
-    "interval": "30",
-    "timezone": "Pacific/Auckland",
+    "interval": "D",
+    "timezone": "America/New_York",
     "theme": "dark",
     "style": "1",
     "locale": "en",
@@ -85,8 +85,8 @@ function combineTicker(ticker) {
     );
 
     tickerObj.options.symbol.textContent = completeSymbol
-    console.log(completeSymbol)
-    document.querySelector(".tradingview-widget-container").append(tickerObj)
+    //console.log(completeSymbol)
+    //document.querySelector(".tradingview-widget-container").append(tickerObj)
     
 }
 
