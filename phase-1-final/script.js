@@ -1,4 +1,3 @@
-//let stock = 'IPOF'
 //let apiKey = '77bee9041a7ec2307b9a6644fb2d307c'
 //let  apiKey = '5d15681bbb513c48cd0a23a590947092'
 //let apiKey = '7f245f5bc1f73dd003ca66b034f06f81'
@@ -16,7 +15,6 @@ fetch(`https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${apiKey}
 .then(resp => resp.json())
 .then(stock => {
   renderPrice(stock)
-  //buyFunction(stock[0].price)
 })
 } 
 
@@ -28,7 +26,6 @@ function renderPrice(stock) {
   
   stockPrice = stockPrice.toFixed(2)
   console.log(stockPrice)
-  console.log(parseInt(priceContainer.textContent))
   priceContainer.textContent = '$ ' + stockPrice;
 
   const buyForm = document.querySelector('#buyStock')
@@ -59,11 +56,7 @@ combineTicker('SPY')
 
 //chart in progress
 function combineTicker(ticker) {
-  // const tickerSymbol = tickerObj.options.symbol 
-  // const tickerSplit = tickerSymbol.split(':')
-  // const nasdaq = tickerSplit[0]
-  // const completeSymbol = nasdaq + ":"+ticker
-
+ 
   const completeSymbol = ticker
   
   const tickerObj = new TradingView.widget(
@@ -85,23 +78,10 @@ function combineTicker(ticker) {
     );
 
     tickerObj.options.symbol.textContent = completeSymbol
-    //console.log(completeSymbol)
-    //document.querySelector(".tradingview-widget-container").append(tickerObj)
+    
     
 }
 
-// const buyInput = document.querySelector("buy")
-
-// function buyFunction(stockPrice) {
-//   buyInput.value = stockPrice
-//}
-
-// const buyInput = document.getElementById('buy')
-// const buyStock = document.getElementById('buyStock')
-// buyStock.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   console.log(e.target.elements[0].value)
-// })
 
 
 
