@@ -21,9 +21,9 @@ header {
   
 }
 
-.nav_links li a {}
 
-body {background-color: #97acdd}
+
+body {background-color: grey}
 
 .form-group {
     width: 220px;
@@ -52,7 +52,7 @@ body {background-color: #97acdd}
 }
 
 .search>input {
-  color: white;
+  color: black;
   width: 196px;
   border: transparent;
   font-size: 12px;
