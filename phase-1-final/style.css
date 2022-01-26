@@ -91,12 +91,18 @@ td, th {
 body {background-color: #131722}
 
 #wrapper {
-  display: flex;
-  flex-direction: row-reverse;
+  display: grid;
 }
 
 .stock-form {
+  display: flex;
+  flex-direction: row;
   margin: auto;
+}
+
+#priceContainer {
+  margin: 0;
+  
 }
 
 .form-group {
