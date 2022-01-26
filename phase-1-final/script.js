@@ -18,7 +18,7 @@ function renderPrice(stock) {
   
   stockPrice = stockPrice.toFixed(2)
   console.log(stockPrice)
-  priceContainer.textContent =  stockPrice;
+  priceContainer.textContent = '$ ' + stockPrice;
 
   const buyForm = document.querySelector('#buyStock')
   buyForm.addEventListener("submit", (e) => {
@@ -26,7 +26,7 @@ function renderPrice(stock) {
     console.log(stockPrice)
     const quantity = e.target.children[0].value
     const stockSymbol = stock[0].symbol
-    const value = quantity * stockPrice
+    const value = stockPrice
     // let dollarUSLocale = Intl.NumberFormat('en-us');
     // value = dollarUSLocale.format(value)
     onAddWebsite(quantity, stockSymbol, value)
@@ -52,9 +52,9 @@ const tableEl = document.querySelector("table");
         tbodyEl.innerHTML += `
             <tr>
                 <td>${stockSymbol}</td>
-                <td>${value}</td>
+                <td>$ ${value}</td>
                 <td>${quantity}</td>
-                <td>${value * quantity}</td>
+                <td>$ ${value * quantity}</td>
                 <td><input type="number" id="sellBox"><button class="deleteBtn">Sell</button></td>
             </tr>
         `;
@@ -115,6 +115,8 @@ function combineTicker(ticker) {
     
     
 }
+
+
 
 
 
