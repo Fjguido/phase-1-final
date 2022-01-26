@@ -47,6 +47,20 @@ header {
   margin-bottom: 82px;
 
 }
+
+#stock-query, #buy {
+  border: none;
+  border-radius: 50px;
+  outline: none;
+  background-color: rgb(255, 255, 255);
+  
+}
+
+
+
+.wrapper {
+  justify-content: center;
+}
 table {
   border-collapse: collapse;
   width: 100%;
