@@ -3,13 +3,6 @@
 //let apiKey = '7f245f5bc1f73dd003ca66b034f06f81'
 let apiKey = '2a33673e3601176f857cb30e5207f88d'
 
-//let url = `https://financialmodelingprep.com/api/v3/quote/${stock}?apikey=${apiKey}`
-
-
-
-
-// queryStock();
-
 function queryStock(ticker) {
 fetch(`https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${apiKey}`)
 .then(resp => resp.json())
