@@ -27,36 +27,51 @@ function renderPrice(stock) {
     const quantity = e.target.children[0].value
     const stockSymbol = stock[0].symbol
     const value = quantity * stockPrice
-    console.log(quantity, stockSymbol, value)
+    // let dollarUSLocale = Intl.NumberFormat('en-us');
+    // value = dollarUSLocale.format(value)
+    onAddWebsite(quantity, stockSymbol, value)
 
   })
 
 }
 
 
-const formEl = document.querySelector("#search-stock");
+const formEl = document.querySelector("#buyStock");
 const tbodyEl = document.querySelector("tbody");
 const tableEl = document.querySelector("table");
       
-      function onAddWebsite(e) {
-        e.preventDefault();
-        const stockName = document.getElementById("stock-query").value;
-        const quantityOfStock = document.getElementById("buy").value;
-        let priceOfStock = document.getElementById('priceContainer').value;
-        console.log(priceOfStock)
-        priceOfStock = parseInt(priceOfStock)
-        console.log(priceOfStock)
+      function onAddWebsite(quantity, stockSymbol, value) {
+
+        //e.preventDefault();
+        // const stockSymbol = document.getElementById("stock-query").value.toUpperCase();
+        // const quantity = document.getElementById("buy").value;
+        // const value = document.getElementById('priceContainer').value;
+        console.log(value)
+        value = parseInt(value)
+        console.log(value)
         tbodyEl.innerHTML += `
             <tr>
-                <td>${stockName}</td>
-                <td>${priceOfStock}</td>
-                <td>${quantityOfStock}</td>
-                <td>${priceOfStock * quantityOfStock}</td>
+                <td>${stockSymbol}</td>
+                <td>${value}</td>
+                <td>${quantity}</td>
+                <td>${value * quantity}</td>
+                <td><input type="number" id="sellBox"><button class="deleteBtn">Sell</button></td>
             </tr>
         `;
       }
 
-      formEl.addEventListener("submit", onAddWebsite);
+
+      function onDeleteRow(e) {
+        if (!e.target.classList.contains("deleteBtn")) {
+          return;
+        }
+
+        const btn = e.target;
+        btn.closest("tr").remove();
+      }
+
+      //formEl.addEventListener("submit", onAddWebsite);
+      tableEl.addEventListener("click", onDeleteRow);
 
 
 userInput();

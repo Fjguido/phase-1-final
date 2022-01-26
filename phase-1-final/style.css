@@ -31,10 +31,11 @@ header {
 }
 .navLinks li{
   display: inline-block;
-  padding: 0px 10px;
-  margin-right: 100px;
-  margin-bottom: 90px;  
-  font-size: 15px;
+  padding: 0px 40px;
+  margin: auto;
+  /* margin-right: 100px;
+  margin-bottom: 90px;   */
+  font-size: 17px;
 }
 
 .portfolioValue {
@@ -44,7 +45,7 @@ header {
   border: none;
   border-radius: 50px;
   margin-right: 90px;
-  margin-bottom: 82px;
+  margin-bottom: 2px;
 
 }
 
@@ -58,6 +59,17 @@ header {
 
 #portfolioTable {
   color: white;
+}
+
+#sellBox {
+  border-radius: 50px;
+  width: 10%;
+}
+
+.portTable {
+  border-radius: 100px;
+  width: 80%;
+  margin: auto;
 }
 
 .wrapper {
@@ -102,6 +114,7 @@ body {background-color: #131722}
 #logo1 {
   max-width: 30%;
   height: auto;
+  margin-left: 20px
 }
 
 .search>input {
