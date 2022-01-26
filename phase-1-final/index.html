@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-      <img id="logo1" src="pstonks4.png" alt="logo"> 
+      <img id="logo1" src="paperstonkslogo.png" alt="logo"> 
       <nav>
         <ul class="navLinks">
           <li><a href="#">Market</a></li>
@@ -18,8 +18,45 @@
       </nav>
       <a class='portfolioValue'>$100,000</a>
     </header>
+    <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text"></span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "US 100"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR/USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    }
+  ],
+  "showSymbolLogo": true,
+  "colorTheme": "dark",
+  "isTransparent": true,
+  "displayMode": "adaptive",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
     <div id="wrapper">
-    <form id="search-stock" action="" method="POST">
+    <form id="search-stock">
       <input type="text" id="stock-query" name="search-stock" placeholder="Symbol" autocomplete="off" required="true">
       <input type="submit" value='Search'>
       <!-- <button class="btn" data-btn>BUY</button> -->

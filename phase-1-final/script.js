@@ -1,7 +1,7 @@
-//let apiKey = '77bee9041a7ec2307b9a6644fb2d307c'
+let apiKey = '77bee9041a7ec2307b9a6644fb2d307c'
 //let  apiKey = '5d15681bbb513c48cd0a23a590947092'
 //let apiKey = '7f245f5bc1f73dd003ca66b034f06f81'
-let apiKey = '2a33673e3601176f857cb30e5207f88d'
+//let apiKey = '2a33673e3601176f857cb30e5207f88d'
 
 function queryStock(ticker) {
 fetch(`https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${apiKey}`)
@@ -11,7 +11,6 @@ fetch(`https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${apiKey}
 })
 } 
 
-
 let stockPrice = 0
 function renderPrice(stock) {
   const priceContainer = document.getElementById('priceContainer')
@@ -19,7 +18,7 @@ function renderPrice(stock) {
   
   stockPrice = stockPrice.toFixed(2)
   console.log(stockPrice)
-  priceContainer.textContent = '$ ' + stockPrice;
+  priceContainer.textContent =  stockPrice;
 
   const buyForm = document.querySelector('#buyStock')
   buyForm.addEventListener("submit", (e) => {
@@ -29,9 +28,36 @@ function renderPrice(stock) {
     const stockSymbol = stock[0].symbol
     const value = quantity * stockPrice
     console.log(quantity, stockSymbol, value)
+
   })
 
 }
+
+
+const formEl = document.querySelector("#search-stock");
+const tbodyEl = document.querySelector("tbody");
+const tableEl = document.querySelector("table");
+      
+      function onAddWebsite(e) {
+        e.preventDefault();
+        const stockName = document.getElementById("stock-query").value;
+        const quantityOfStock = document.getElementById("buy").value;
+        let priceOfStock = document.getElementById('priceContainer').value;
+        console.log(priceOfStock)
+        priceOfStock = parseInt(priceOfStock)
+        console.log(priceOfStock)
+        tbodyEl.innerHTML += `
+            <tr>
+                <td>${stockName}</td>
+                <td>${priceOfStock}</td>
+                <td>${quantityOfStock}</td>
+                <td>${priceOfStock * quantityOfStock}</td>
+            </tr>
+        `;
+      }
+
+      formEl.addEventListener("submit", onAddWebsite);
+
 
 userInput();
 function userInput(stock) {

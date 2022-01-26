@@ -56,7 +56,9 @@ header {
   
 }
 
-
+#portfolioTable {
+  color: white;
+}
 
 .wrapper {
   justify-content: center;
