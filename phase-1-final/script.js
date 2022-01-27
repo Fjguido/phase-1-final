@@ -11,6 +11,7 @@ fetch(`https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${apiKey}
 } 
 
 //let totalPrice = 0
+//Render the searched stock price onto the page
 function renderPrice(stock) {
   const priceContainer = document.getElementById('priceContainer')
   totalPrice = stock[0].price
@@ -20,6 +21,7 @@ function renderPrice(stock) {
 
 }
 
+//Event listener for the buy form to append the stock name, quantity, value onto the Table DOM
 const buyForm = document.querySelector('#buy-btn')
 buyForm.addEventListener("click", (e) => {
   e.stopPropagation()
@@ -30,6 +32,22 @@ buyForm.addEventListener("click", (e) => {
   const value = document.getElementById('priceContainer').innerHTML
   const numberValue = value.slice(2) 
 
+  //Grab buying power to update
+  let buyingPowerLocation = document.querySelector('.portfolioValue')
+  console.log(buyingPowerLocation.textContent)
+  let buyingPower = buyingPowerLocation.textContent
+  // console.log(buyingPower)
+  buyingPower = buyingPower.replace('$', '')
+  buyingPower = buyingPower.replace(',', '')
+  buyingPower = parseInt(buyingPower);
+  buyingPower = buyingPower - totalPrice*quantity;
+  let dollarUSLocale = Intl.NumberFormat('en-US');
+
+
+  buyingPower =  ("$" + dollarUSLocale.format(buyingPower));
+  buyingPowerLocation.textContent = buyingPower;
+  console.log(buyingPower)
+
   totalPrice = numberValue * quantity
   totalPrice = totalPrice.toFixed(2) 
   priceContainer.textContent = value;
@@ -38,7 +56,7 @@ buyForm.addEventListener("click", (e) => {
 })
 
 
-
+//function to add the user input onto the chart
 
 const formEl = document.querySelector("#buyStock");
 const tbodyEl = document.querySelector("tbody");
@@ -54,7 +72,7 @@ function onAddWebsite(quantity, stockSymbol, totalPrice) {
           <td>$ ${shareValue}</td>
           <td>${quantity}</td>
           <td>$ ${totalPrice}</td>
-          <td><input type="number" id="sellBox"><button class="deleteBtn">Sell</button></td>
+          <td><button class="deleteBtn">Sell All</button></td>
       </tr>
   `;
 }
@@ -64,8 +82,25 @@ function onDeleteRow(e) {
   if (!e.target.classList.contains("deleteBtn")) {
     return;
   }
+  //Grab buying power to update
+  let buyingPowerLocation = document.querySelector('.portfolioValue')
+  console.log(buyingPowerLocation.textContent)
+  let buyingPower = buyingPowerLocation.textContent
+  // console.log(buyingPower)
+  buyingPower = buyingPower.replace('$', '')
+  buyingPower = buyingPower.replace(',', '')
+  buyingPower = parseInt(buyingPower);
+ //buyingPower = buyingPower + totalPrice;
+  buyingPower = 100000
+  let dollarUSLocale = Intl.NumberFormat('en-US');
+
+
+  buyingPower =  ("$" + dollarUSLocale.format(buyingPower));
+  buyingPowerLocation.textContent = buyingPower;
+  console.log(buyingPower)
 
   const btn = e.target;
+  console.log(totalPrice)
   btn.closest("tr").remove();
 }
 
