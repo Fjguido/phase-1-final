@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
-/* * {
-  box-sizing: border-box;
-  margin:0;
-  padding: 0;
-} */
 
 
 li, button {
@@ -33,9 +28,9 @@ header {
   display: inline-block;
   padding: 0px 40px;
   margin: auto;
-  /* margin-right: 100px;
-  margin-bottom: 90px;   */
-  font-size: 17px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  font-size: 18px;
 }
 
 .portfolioValue {
@@ -45,7 +40,7 @@ header {
   border: none;
   border-radius: 50px;
   margin-right: 90px;
-  margin-bottom: 2px;
+  margin-bottom: 20px;
 
 }
 
@@ -57,8 +52,9 @@ header {
   
 }
 
-#portfolioTable {
+table {
   color: white;
+  border-radius: 100px;
 }
 
 #sellBox {
@@ -81,23 +77,32 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid white;
+  border-radius: 50px;
+  border-spacing: 0;
   text-align:center;
   padding: 1px;
 }
 
-
+h2 {
+  color:black;
+}
 
 body {background-color: #131722}
 
 #wrapper {
   display: grid;
 }
+.inputButton {
+  border-radius: 50px;
+  margin-right: 6px;
+}
 
 .stock-form {
   display: flex;
   flex-direction: row;
   margin: auto;
+  margin-bottom: 10px;
 }
 
 #priceContainer {
@@ -141,4 +146,3 @@ body {background-color: #131722}
   opacity: .3;
   border-radius: 19px;
 }
-
