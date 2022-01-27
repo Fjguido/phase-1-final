@@ -41,6 +41,9 @@ buyForm.addEventListener("click", (e) => {
   buyingPower = buyingPower.replace(',', '')
   buyingPower = parseInt(buyingPower);
   buyingPower = buyingPower - totalPrice*quantity;
+  if(buyingPower < 1){
+    return alert('Get your money up, not your funny up')
+  }
   let dollarUSLocale = Intl.NumberFormat('en-US');
 
 
@@ -49,6 +52,7 @@ buyForm.addEventListener("click", (e) => {
   console.log(buyingPower)
 
   totalPrice = numberValue * quantity
+  priceHold = totalPrice
   totalPrice = totalPrice.toFixed(2) 
   priceContainer.textContent = value;
   
@@ -90,8 +94,8 @@ function onDeleteRow(e) {
   buyingPower = buyingPower.replace('$', '')
   buyingPower = buyingPower.replace(',', '')
   buyingPower = parseInt(buyingPower);
- //buyingPower = buyingPower + totalPrice;
-  buyingPower = 100000
+  buyingPower = buyingPower + priceHold;
+  //buyingPower = 100000
   let dollarUSLocale = Intl.NumberFormat('en-US');
 
 
