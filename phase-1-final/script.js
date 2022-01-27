@@ -1,8 +1,7 @@
-let apiKey = '77bee9041a7ec2307b9a6644fb2d307c'
-//let  apiKey = '5d15681bbb513c48cd0a23a590947092'
+//let apiKey = '77bee9041a7ec2307b9a6644fb2d307c'
+let  apiKey = '5d15681bbb513c48cd0a23a590947092'
 //let apiKey = '7f245f5bc1f73dd003ca66b034f06f81'
 //let apiKey = '2a33673e3601176f857cb30e5207f88d'
-
 function queryStock(ticker) {
 fetch(`https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${apiKey}`)
 .then(resp => resp.json())
@@ -11,67 +10,67 @@ fetch(`https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${apiKey}
 })
 } 
 
-let stockPrice = 0
+//let totalPrice = 0
 function renderPrice(stock) {
   const priceContainer = document.getElementById('priceContainer')
-  stockPrice = stock[0].price
-  
-  stockPrice = stockPrice.toFixed(2)
-  console.log(stockPrice)
-  priceContainer.textContent = '$ ' + stockPrice;
+  totalPrice = stock[0].price
+  totalPrice = totalPrice.toFixed(2) 
 
-  const buyForm = document.querySelector('#buyStock')
-  buyForm.addEventListener("submit", (e) => {
-    e.preventDefault()
-    console.log(stockPrice)
-    const quantity = e.target.children[0].value
-    const stockSymbol = stock[0].symbol
-    const value = stockPrice
-    // let dollarUSLocale = Intl.NumberFormat('en-us');
-    // value = dollarUSLocale.format(value)
-    onAddWebsite(quantity, stockSymbol, value)
-
-  })
+  priceContainer.textContent = '$ ' + totalPrice;
 
 }
+
+const buyForm = document.querySelector('#buy-btn')
+buyForm.addEventListener("click", (e) => {
+  e.stopPropagation()
+  e.preventDefault()
+  const priceContainer = document.getElementById('priceContainer')
+  const quantity = document.getElementById('buy').value
+  const stockSymbol = document.getElementById('stock-query').value.toUpperCase();
+  const value = document.getElementById('priceContainer').innerHTML
+  const numberValue = value.slice(2) 
+
+  totalPrice = numberValue * quantity
+  totalPrice = totalPrice.toFixed(2) 
+  priceContainer.textContent = value;
+  
+  onAddWebsite(quantity, stockSymbol, totalPrice)
+})
+
+
 
 
 const formEl = document.querySelector("#buyStock");
 const tbodyEl = document.querySelector("tbody");
 const tableEl = document.querySelector("table");
       
-      function onAddWebsite(quantity, stockSymbol, value) {
-
-        //e.preventDefault();
-        // const stockSymbol = document.getElementById("stock-query").value.toUpperCase();
-        // const quantity = document.getElementById("buy").value;
-        // const value = document.getElementById('priceContainer').value;
-        console.log(value)
-        value = parseInt(value)
-        console.log(value)
-        tbodyEl.innerHTML += `
-            <tr>
-                <td>${stockSymbol}</td>
-                <td>$ ${value}</td>
-                <td>${quantity}</td>
-                <td>$ ${value * quantity}</td>
-                <td><input type="number" id="sellBox"><button class="deleteBtn">Sell</button></td>
-            </tr>
-        `;
-      }
+function onAddWebsite(quantity, stockSymbol, totalPrice) {
+  
+  let shareValue = totalPrice/quantity
+  shareValue = shareValue.toFixed(2);
+  tbodyEl.innerHTML += `
+      <tr>
+          <td>${stockSymbol}</td>
+          <td>$ ${shareValue}</td>
+          <td>${quantity}</td>
+          <td>$ ${totalPrice}</td>
+          <td><input type="number" id="sellBox"><button class="deleteBtn">Sell</button></td>
+      </tr>
+  `;
+}
 
 
-      function onDeleteRow(e) {
-        if (!e.target.classList.contains("deleteBtn")) {
-          return;
-        }
+function onDeleteRow(e) {
+  if (!e.target.classList.contains("deleteBtn")) {
+    return;
+  }
 
-        const btn = e.target;
-        btn.closest("tr").remove();
-      }
+  const btn = e.target;
+  btn.closest("tr").remove();
+}
 
-      //formEl.addEventListener("submit", onAddWebsite);
-      tableEl.addEventListener("click", onDeleteRow);
+formEl.addEventListener("submit", onAddWebsite);
+tableEl.addEventListener("click", onDeleteRow);
 
 
 userInput();
@@ -80,6 +79,7 @@ function userInput(stock) {
   const searchForm = document.getElementById('search-stock')
 
   searchForm.addEventListener('submit', (e) => {
+    e.stopPropagation()
     e.preventDefault();
     queryStock(inputField.value.toUpperCase())
     combineTicker(inputField.value.toUpperCase())
@@ -119,12 +119,3 @@ function combineTicker(ticker) {
 
 
 
-
-
-
-
-
-// const btn = document.querySelector("[data-btn]")
-// btn.addEventListener("click", () => {
-//   btn.classList.add("animating")
-// })

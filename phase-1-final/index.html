@@ -12,7 +12,7 @@
       <nav>
         <ul class="navLinks">
           <li><a href="#">Market</a></li>
-          <li><a href="#">History</a></li>
+          <li><a href="#">Education</a></li>
           <li><a href="#">News</a></li>
         </ul>
       </nav>
@@ -48,7 +48,7 @@
   ],
   "showSymbolLogo": true,
   "colorTheme": "dark",
-  "isTransparent": true,
+  "isTransparent": false,
   "displayMode": "adaptive",
   "locale": "en"
 }
@@ -66,15 +66,10 @@
     <!-- <input type="hidden" id="buy-symbol" value="" />
     <input type="hidden" id="buy-price" value=0 /> -->
     <input type="text" id="buy" name="buy-stock" placeholder="Quantity of Shares" autocomplete="off" required="true">
-    <input type="submit" value="Buy" class="inputButton">
+    <input id="buy-btn" type="submit" value="Buy" class="inputButton">
   </form>
   <h3 id="priceContainer" style="color:white"></h3>
 </div>
-  <!-- <div class="checkmark-container">
-    <svg x="0px" y="0px" fill="none" class="checkmark-svg" viewBox="0 0 25 30">
-     <path d="M2,19.2C5.9,23.6,9.4,28,9.4,28L23,2"/>
-   </svg>
-  </div> -->
    <div class="tradingview-widget-container">
     <div id="tradingview_b7a08"></div>
     <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-IPOF/" rel="noopener" target="_blank"><span class="blue-text">Chart</span></a> by TradingView</div>
@@ -84,23 +79,16 @@
 </div>
   <div class="portTable">
     <table id="portfolioTable">
-      <thead>
-      <tbody>
-        <tr>
+      <tbody><tr>
         <th>Symbol</th>
         <th>Share Value</th>
         <th>Quantity</th>
         <th>Total Value</th>
         <th>Sell</th>
       </tr>
-    </tbody>
-  </thead>
-  </table>
+    </tbody></table>
     </div>
 
     <script src="script.js"></script>
   </body>
 </html>
-
-
-
