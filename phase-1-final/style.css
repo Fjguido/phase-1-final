@@ -79,6 +79,7 @@ table {
   border-radius: 12px 12px 0 0;
   /* background-color: green; */
   margin: auto;
+  margin-top: 24px;
 
    /* background: rgb(233,76,161);  */
  /* background: -moz-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%); */
@@ -176,4 +177,8 @@ th{
  }
  tr:nth-child(even){
   background-color: #eeeeee;
+ }
+
+ .tradingview-widget-container {
+   margin-top: 24px;
  }

@@ -1,6 +1,6 @@
 //let apiKey = '77bee9041a7ec2307b9a6644fb2d307c'
-let  apiKey = '5d15681bbb513c48cd0a23a590947092'
-//let apiKey = '7f245f5bc1f73dd003ca66b034f06f81'
+//let  apiKey = '5d15681bbb513c48cd0a23a590947092'
+let apiKey = '7f245f5bc1f73dd003ca66b034f06f81'
 //let apiKey = '2a33673e3601176f857cb30e5207f88d'
 function queryStock(ticker) {
 fetch(`https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${apiKey}`)
@@ -52,7 +52,7 @@ buyForm.addEventListener("click", (e) => {
   console.log(buyingPower)
 
   totalPrice = numberValue * quantity
-  priceHold = totalPrice
+  //priceHold = totalPrice
   totalPrice = totalPrice.toFixed(2) 
   priceContainer.textContent = value;
   
@@ -94,8 +94,11 @@ function onDeleteRow(e) {
   buyingPower = buyingPower.replace('$', '')
   buyingPower = buyingPower.replace(',', '')
   buyingPower = parseInt(buyingPower);
-  buyingPower = buyingPower + priceHold;
-  //buyingPower = 100000
+  totalPrice = parseInt(totalPrice)
+  buyingPower = buyingPower + totalPrice;
+  console.log(typeof(buyingPower))
+  console.log(typeof(totalPrice))
+  buyingPower = 100000
   let dollarUSLocale = Intl.NumberFormat('en-US');
 
 
